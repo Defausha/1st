@@ -179,3 +179,41 @@ def is_even(num: int) -> bool:
 
 check_even = is_even(4)
 print(check_even)  # Виведе: True
+
+def modify_string(original: str) -> str:
+    original = "змінено"
+    return original
+
+str_var = "оригінал"
+print(modify_string(str_var))  # виведе: змінено
+print(str_var)                # виведе: оригінал
+
+def modify_list(lst: list) -> None:
+    lst.append(4)
+
+my_list = [1, 2, 3]
+modify_list(my_list)
+print(my_list)  # виведе: [1, 2, 3, 4]
+
+def modify_list(lst: list) -> None:
+    lst = lst.copy()
+    lst.append(4)
+
+my_list = [1, 2, 3]
+modify_list(my_list)
+print(my_list)  # виведе: [1, 2, 3]
+
+def string_to_codes(string: str) -> dict:
+    # Ініціалізація словника для зберігання кодів
+    codes = {}  
+    # Перебір кожного символу в рядку
+    for ch in string:  
+        # Перевірка, чи символ вже є в словнику
+        if ch not in codes:
+            # Додавання пари символ-код в словник  
+            codes[ch] = ord(ch)  
+    return codes
+
+result = string_to_codes("Hello world!")
+print(result)
+# Виведе: {'H': 72, 'e': 101, 'l': 108, 'o': 111, ' ': 32, 'w': 119, 'r': 114, 'd': 100, '!': 33}
