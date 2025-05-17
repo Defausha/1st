@@ -217,3 +217,63 @@ def string_to_codes(string: str) -> dict:
 result = string_to_codes("Hello world!")
 print(result)
 # Виведе: {'H': 72, 'e': 101, 'l': 108, 'o': 111, ' ': 32, 'w': 119, 'r': 114, 'd': 100, '!': 33}
+
+x = 50
+
+def func() -> None:
+    x = 2
+    print('Зміна локального x на', x)  # Зміна локального x на 2
+
+func()
+print('Глобальний x як і раніше', x)  # x як і раніше 50
+
+def outer_func():
+    enclosing_var = "Я змінна в функції, що охоплює"
+
+    def inner_func():
+        print("Всередині вкладеної функції:", enclosing_var)
+
+    inner_func()
+
+outer_func() #зміна enclosing  fun зсередини вкладеної fun, через nonlocal
+
+def func_outer():
+    x = 2
+
+    def func_inner():
+        nonlocal x
+        x = 5
+
+    func_inner()
+    return x
+
+result = func_outer()  # 5
+
+x = 50
+
+def func():
+    global x
+    print('x дорівнює', x)  # x дорівнює 50
+    x = 2
+    print('Змінюємо глобальне значення x на', x)  # Змінюємо глобальне значення x на 2
+
+func()
+print('Значення x складає', x)# Значення x складає 2
+
+def func(a, b=5, c=10):
+    print('a дорівнює', a,', b дорівнює', b,', а c дорівнює', c)
+
+# a дорівнює 3, b дорівнює 7, а c дорівнює 10
+func(3, 7)
+
+# a дорівнює 25, b дорівнює 5, а c дорівнює 24
+func(25, c=24)
+
+# a дорівнює 100, b дорівнює 5, а c дорівнює 50
+func(c=50, a=100)
+
+def say(message, times=1):
+    print(message * times)
+
+say('Привіт') 
+say('Світ', 5)
