@@ -277,3 +277,17 @@ def say(message, times=1):
 
 say('Привіт') 
 say('Світ', 5)
+
+def print_all_args(*args):
+    for arg in args:
+        print(arg)
+
+print_all_args(1, 'hello', True)
+
+def concatenate(*args) -> str:
+    result = ""
+    for arg in args:
+        result += arg
+    return result
+
+print(concatenate("Hello", " ", "world", "!"))
