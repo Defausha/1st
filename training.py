@@ -188,7 +188,7 @@ str_var = "оригінал"
 print(modify_string(str_var))  # виведе: змінено
 print(str_var)                # виведе: оригінал
 
-def modify_list(lst: list) -> None:
+def modify_list(lst: list) -> None: # type: ignore
     lst.append(4)
 
 my_list = [1, 2, 3]
@@ -220,7 +220,7 @@ print(result)
 
 x = 50
 
-def func() -> None:
+def func() -> None: # type: ignore
     x = 2
     print('Зміна локального x на', x)  # Зміна локального x на 2
 
@@ -251,7 +251,7 @@ result = func_outer()  # 5
 
 x = 50
 
-def func():
+def func(): # type: ignore # type: ignore
     global x
     print('x дорівнює', x)  # x дорівнює 50
     x = 2
@@ -291,3 +291,31 @@ def concatenate(*args) -> str:
     return result
 
 print(concatenate("Hello", " ", "world", "!"))
+
+def factorial(n): # type: ignore
+    if n == 0: # базовий випадок
+        return 1
+    else:
+        return n * factorial(n-1) # рекурсивний випадок
+
+print(factorial(5)) # виведе 120
+
+def fibonacci(n):
+    if n <= 1: # базовий випадок
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2) # рекурсивний випадок
+
+print(fibonacci(10)) # виведе 55
+
+def factorial(n):
+    print("Виклик функції factorial з n = ", n)
+    if n == 1:
+        print("Базовий випадок, n = 1, повернення 1")
+        return 1
+    else:
+        result = n * factorial(n-1)
+        print("Повернення результату для n = ", n, ": ", result)
+        return result
+
+print(factorial(5))
